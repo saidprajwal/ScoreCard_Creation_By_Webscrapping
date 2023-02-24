@@ -1,0 +1,200 @@
+{
+	"Process_areas" : [ 
+	{
+	"Process" : "IdeaManagement",
+	"Dimension" : "Probing",
+	"Perspective" :	"AcceleratorStartupPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "KnowledgeManagement",
+	"Dimension" :	"Probing",
+	"Perspective" :	"IncubatorCorporatePerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "ResearchManagement",
+	"Dimension" :	"Probing",
+	"Perspective" :	"IncubatorAcademicPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "EntrepreneurManagement",
+	"Dimension" :	"Probing",
+	"Perspective" :	"IncubatorVentureCapitalistPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "ContractManagement",
+	"Dimension" :	"Acting",
+	"Perspective" :	"AcceleratorStartupPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "DeliveryManagement",
+	"Dimension" :	"Acting",
+	"Perspective" :	"IncubatorCorporatePerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "SupportManagement",
+	"Dimension" :	"Acting",
+	"Perspective" :	"IncubatorAcademicPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "Social ResponsibilityManagement",
+	"Dimension" :	"Acting",
+	"Perspective" :	"IncubatorVentureCapitalistPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "ScopeManagement",
+	"Dimension" :	"Scoping",
+	"Perspective" :	"AcceleratorStartupPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "FinanceManagement",
+	"Dimension" :	"Scoping",
+	"Perspective" :	"IncubatorCorporatePerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "ProjectManagement",
+	"Dimension" :	"Scoping",
+	"Perspective" :	"IncubatorAcademicPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "IntegrationManagement",
+	"Dimension" :	"Scoping",
+	"Perspective" :	"IncubatorVentureCapitalistPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "OperationsManagement",
+	"Dimension" :	"Setting",
+	"Perspective" :	"AcceleratorStartupPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "HRManagement",
+	"Dimension" :	"Setting",
+	"Perspective" :	"IncubatorCorporatePerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "SecurityManagement",
+	"Dimension" :	"Setting",
+	"Perspective" :	"IncubatorAcademicPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "ProcessManagement",
+	"Dimension" :	"Setting",
+	"Perspective" :	"IncubatorVentureCapitalistPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "InnovationManagement",
+	"Dimension" :	"Innovating",
+	"Perspective" :	"AcceleratorStartupPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "ComplianceManagement",
+	"Dimension" :	"Innovating",
+	"Perspective" :	"IncubatorCorporatePerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "TechnologyTransferManagementPerspective",
+	"Dimension" :	"Innovating",
+	"Perspective" :	"IncubatorAcademicPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "RiskManagement",
+	"Dimension" :	"Innovating",
+	"Perspective" :	"IncubatorVentureCapitalistPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "GovernanceManagement",
+	"Dimension" :	"Owning",
+	"Perspective" :	"AcceleratorStartupPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "CapacityManagement",
+	"Dimension" :	"Owning",
+	"Perspective" :	"IncubatorCorporatePerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "InfrastructureManagement",
+	"Dimension" :	"Owning",
+	"Perspective" :	"IncubatorAcademicPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "MergersandAcquisitionManagement",
+	"Dimension" :	"Owning",
+	"Perspective" :	"IncubatorVentureCapitalistPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "MarketingManagement",
+	"Dimension" :	"Nurturing",
+	"Perspective" :	"AcceleratorStartupPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "PerformanceManagement",
+	"Dimension" :	"Nurturing",
+	"Perspective" :	"IncubatorCorporatePerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "PartnershipManagement",
+	"Dimension" :	"Nurturing",
+	"Perspective" :	"IncubatorAcademicPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	},
+	{
+	"Process" : "IPOManagement",
+	"Dimension" :	"Nurturing",
+	"Perspective" :	"IncubatorVentureCapitalistPerspective",
+	"Maxscore" : 5,
+	"Weight" : 10
+	}
+	]
+}
