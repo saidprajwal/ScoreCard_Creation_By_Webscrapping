@@ -5,16 +5,16 @@ import openpyxl
 
 folder="C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel"
 
-wb = openpyxl.load_workbook("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\Audit.xlsx")
-sh2 = wb['Sheet2']
+wb = openpyxl.load_workbook("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\AuditScores.xlsx")
+sh1 = wb['Sheet1']
 
 # store scores from excel in list
 scores = []
-for i in range(2, sh2.max_row + 1):
-    if (sh2.cell(row=i, column=1).value == None):
+for i in range(2, sh1.max_row + 1):
+    if (sh1.cell(row=i, column=1).value == None):
         break_point = i
         break
-    scores.append(sh2.cell(row=i, column=1).value)
+    scores.append(sh1.cell(row=i, column=1).value)
 
 
 # print(scores)
@@ -24,7 +24,7 @@ def extract_pdf(folder,pdf):
     reader = PyPDF2.PdfReader(path)
     pages = len(reader.pages)
     str = ""
-    c = sh2.cell(row=1, column=cols)
+    c = sh1.cell(row=1, column=cols)
     c.value=f
     wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\Audit.xlsx")
     # check if score is present in pdf and store value
@@ -33,7 +33,7 @@ def extract_pdf(folder,pdf):
 
     for item in scores:
         flag = 0
-        c = sh2.cell(row=rows, column=cols)
+        c = sh1.cell(row=rows, column=cols)
         for i in range(0, pages):
             str = reader.pages[i].extract_text()
             if item.lower() in str.lower():
@@ -51,7 +51,7 @@ def extract_pdf(folder,pdf):
     # store total score obtained in break_point row
     #c = sh2.cell(row=break_point, column=cols)
     #c.value = "{}/{}".format(total_score, len(scores))
-    c = sh2.cell(row=break_point, column=cols)
+    c = sh1.cell(row=break_point, column=cols)
     c.value = (total_score / len(scores)) * 100
     wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\Audit.xlsx")
 
@@ -59,7 +59,7 @@ def extract_pdf(folder,pdf):
 def extract_ppt(folder,path):
     path = folder + '\\' + f
     prs = Presentation(path)
-    c = sh2.cell(row=1, column=cols)
+    c = sh1.cell(row=1, column=cols)
     c.value = f
     wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\Audit.xlsx")
     str = ""
@@ -78,7 +78,7 @@ def extract_ppt(folder,path):
     total_score = 0
     rows = 2
     for item in scores:
-        c = sh2.cell(row=rows, column=cols)
+        c = sh1.cell(row=rows, column=cols)
         if item.lower() in str.lower():
             c.value = 1;
             total_score += 1;
@@ -89,9 +89,9 @@ def extract_ppt(folder,path):
         rows = rows + 1
 
 
-    c = sh2.cell(row=break_point, column=cols)
+    c = sh1.cell(row=break_point, column=cols)
     c.value = (total_score / len(scores)) * 100
-    wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\Audit.xlsx")
+    wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\AuditScores.xlsx")
 
 
 for f in os.listdir(folder):

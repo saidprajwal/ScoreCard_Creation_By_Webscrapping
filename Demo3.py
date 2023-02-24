@@ -12,3 +12,6 @@ process_areas=[]
 for i in range(len(li)):
     process_areas.append(li[i].get("Process"))
 print(process_areas)
+i=5
+print(str(i))
+print(type(i))
