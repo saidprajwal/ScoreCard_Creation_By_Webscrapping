@@ -4,7 +4,7 @@ import openpyxl
 import json
 
 
-wb=openpyxl.load_workbook("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\Audit.xlsx")
+wb=openpyxl.load_workbook("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\StartUp.xlsx")
 sh1=wb['Sheet1']
 startUps=[]
 for i in range (2,sh1.max_row+1):
@@ -34,12 +34,12 @@ for list in startUps:
  c1 = sh2.cell(row=rows, column=col)
  c1.value = list
  rows=rows+1
- wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\Audit.xlsx")
+ wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\StartUp.xlsx")
  for value in process_areas:
     col=1
     c1 = sh2.cell(row=rows, column=col)
     c1.value = value
-    wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\Audit.xlsx")
+    wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\StartUp.xlsx")
     col = col + 1
     print(list+" "+ value + " " + "Management")
     google_search = requests.get("https://www.google.co.in/search?q=" + list+" "+ value )
@@ -58,5 +58,5 @@ for list in startUps:
 
 print("-----------------------------------------------------------------------------------\n")
 
-wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\Audit.xlsx")
+wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\StartUp.xlsx")
 
