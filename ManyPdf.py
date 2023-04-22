@@ -8,7 +8,7 @@ break_point = 1
 folder="C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel"
 
 wb = openpyxl.load_workbook("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\DueDiligence.xlsx")
-sh2 = wb['Sheet2']
+sh2 = wb['Sheet1']
 
 # store scores from excel in list
 scores = []
@@ -17,7 +17,6 @@ for i in range(2, sh2.max_row + 2):
         break_point = i
         break
     scores.append(sh2.cell(row=i, column=1).value)
-
 
 # print(scores)
 cols=2
@@ -92,7 +91,7 @@ def extract_ppt(folder,f):
 
 
     c = sh2.cell(row=break_point, column=cols)
-    c.value = (total_score / len(scores)) * 100
+    c.value = round(((total_score / len(scores)) * 100),2)
     wb.save("C:\\Users\\PRAJWAL\\PycharmProjects\\WebScapping\\excel\\DueDiligence.xlsx")
 
 
@@ -103,3 +102,4 @@ for f in os.listdir(folder):
     elif f.endswith(".pptx"):
         extract_ppt(folder,f)
         cols = cols + 1
+

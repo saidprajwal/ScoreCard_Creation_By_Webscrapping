@@ -17,7 +17,6 @@ for i in range(2, sh2.max_row + 1):
         break
     scores.append(sh2.cell(row=i, column=1).value)
 
-
 # print(scores)
 cols=2
 def extract_pdf(folder,f):
