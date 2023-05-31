@@ -1,0 +1,258 @@
+#tsp
+r=int(input("Enter the rows: "))
+dist_matrix=[]
+for i in range(r):
+    li=list(map(int,input().split()))
+    dist_matrix.append(li)
+for i in dist_matrix:
+    print(i)
+
+import sys
+def nearest_neighbour(dist_matrix,unvisited,curr_city):
+    nearest=sys.maxsize
+    neighbour=None
+    for city in unvisited:
+        if dist_matrix[curr_city][city]<nearest:
+            nearest=dist_matrix[curr_city][city]
+            neighbour=city
+    return nearest,neighbour
+
+def tsp(dist_matrix):
+    n=len(dist_matrix)
+    Tourlist=[]
+    Costlist=[]
+    
+    for j in range(n):
+        tour=[j]*(n+1)
+        unvisited=set(range(0,n))
+        curr_city=j
+        unvisited.remove(j)
+        
+        for i in range(1,n):
+            dist,next_city=nearest_neighbour(dist_matrix,unvisited,curr_city)
+            tour[i]=next_city
+            curr_city=next_city
+            unvisited.remove(curr_city)
+        #tour[0]=j
+        cost=sum(dist_matrix[tour[i]][tour[i+1]] for i in range(n-1))
+        cost+=dist_matrix[tour[0]][tour[n-1]]
+        Costlist.append(cost)
+        Tourlist.append(tour)
+        print(tour)
+        print(cost)
+    print(min(Costlist))
+    index=Costlist.index(min(Costlist))
+    print(Tourlist[index])
+tsp(dist_matrix)
+
+#water jug
+max1=int(input("Enter maximum amount of water in jug1: "))
+max2=int(input("Enter maximum amount of water in jug2: "))
+fill=int(input("Enter fill: "))
+def pour(jug1,jug2):
+    print("%d  %d "%(jug1,jug2))
+    if jug2==fill:
+        return
+    elif jug1!=0 and jug2==0:
+        pour(0,jug1)
+    elif jug2==max2:
+        pour(0,jug1)
+    elif jug1==fill:
+        pour(jug1,0)
+    elif jug1<max1:
+        pour(max1,jug2)
+    elif jug1<(max2-jug2):
+        pour(0,(jug1+jug2))
+    else:
+        pour(jug1-(max2-jug2),(max2-jug2)+jug2)
+        
+pour(0,0)
+
+
+#nqueens
+n=int(input("Enter the number of Queens: "))
+board=[["." for i in range(n)] for j in range(n)]
+for i in board:
+    print(' '.join(i))
+def is_safe(board,row,col):
+    for i in range(col):
+        if board[row][i]=='Q':
+            return False
+    for i,j in zip(range(row,-1,-1),range(col,-1,-1)):
+        if board[i][j]=='Q':
+            return False
+    for i,j in zip(range(row,len(board),1),range(col,-1,-1)):
+        if board[i][j]=='Q':
+            return False
+    return True
+
+def solve(board,col):
+    if col>=len(board):
+        return True
+    
+    for i in range(len(board)):
+        if is_safe(board,i,col):
+            board[i][col]='Q'
+            if solve(board,col+1):
+                return True
+            board[i][col]='.'
+    return False
+solve(board,0)
+for i in board:
+    print(' '.join(i))
+    
+    
+#nltk
+import nltk
+nltk.download('punkt')
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+from nltk.tokenize import word_tokenize
+from nltk.probability import FreqDist
+from nltk.tag import pos_tag
+nltk.download('averaged_perceptron_tagger')
+
+text = "This is a sample sentense. It contain multiple words and some of these repeat. We will analyze this text using NLP text "
+words = word_tokenize(text)
+print("tokenized words:")
+print (words)
+words = [word.lower() for word in words]
+fdist = FreqDist(words)
+print("Word Frequency:")
+print(fdist)
+for word, freq in fdist.items():
+    print(f"{word}: {freq}")
+    stop_words = set(stopwords.words('english'))
+filtered_words = [word for word in words if word.casefold() not in stop_words]
+print("Filtered Words")
+print(filtered_words)
+pos_tags = pos_tag(words)
+print("POS Tags:")
+print(pos_tags)
+
+#tic tac toe
+import math
+# Game board
+board = [[' ', ' ', ' '],
+        [' ', ' ', ' '],
+        [' ', ' ', ' ']]
+# Function to print the game board
+def print_board(board):
+    print('-------------')
+    for row in board:
+        print('| ' + ' | '.join(row) + ' |')
+        print('-------------')
+# Function to check if a player has won
+def check_win(board, player):
+    for i in range(3):
+        if (board[i][0] == player and board[i][1] == player and board[i][2] == player) or (board[0][i] == player and board[1][i] == player and board[2][i] == player) or (board[0][0] == player and board[1][1] == player and board[2][2] == player) or (board[2][0] == player and board[1][1] == player and board[0][2] == player):
+            return True
+    return False
+# Function to check if the game has ended
+def check_game_over(board):
+    if check_win(board, 'X'):
+        return 'X'
+    elif check_win(board, 'O'):
+        return 'O'
+    elif sum(row.count(' ') for row in board) == 0:
+        return 'Tie'
+    else:
+        return None
+# Function to evaluate the board
+def evaluate_board(board):
+    if check_win(board, 'X'):
+        return 1
+    elif check_win(board, 'O'):
+        return -1
+    else:
+        return 0
+# Minimax algorithm
+def minimax(board, depth, is_maximizing_player):
+    result = check_game_over(board)
+    if result is not None:
+        return evaluate_board(board)
+    if is_maximizing_player:
+        best_score = -math.inf
+        for i in range(3):
+            for j in range(3):
+                if board[i][j] == ' ':
+                    board[i][j] = 'X'
+                    score = minimax(board, depth + 1, False)
+                    board[i][j] = ' '
+                    best_score = max(best_score, score)
+        return best_score
+    else:
+        best_score = math.inf
+        for i in range(3):
+            for j in range(3):
+                if board[i][j] == ' ':
+                    board[i][j] = 'O'
+                    score = minimax(board, depth + 1, True)
+                    board[i][j] = ' '
+                    best_score = min(best_score, score)
+        return best_score
+
+# Function to get the best move using the Minimax algorithm
+def get_best_move(board):
+    best_score = -math.inf
+    best_move = None
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] == ' ':
+                board[i][j] = 'X'
+                score = minimax(board, 0, False)
+                board[i][j] = ' '
+                if score > best_score:
+                    best_score = score
+                    best_move = (i, j)
+    return best_move
+
+# Play the game
+# Play the game
+print_board(board)
+while True:
+# Player's move
+    while True:
+        row_input = input('Enter row number (1-3): ')
+        if row_input.isdigit() and 1 <= int(row_input) <= 3:
+            row = int(row_input) - 1
+            break
+        else:
+            print('Invalid input. Please enter a number between 1 and 3.')
+    while True:
+        col_input = input('Enter column number (1-3): ')
+        if col_input.isdigit() and 1 <= int(col_input) <= 3:
+            col = int(col_input) - 1
+            break
+        else:
+            print('Invalid input. Please enter a number between 1 and 3.')
+    if board[row][col] != ' ':
+        print('Invalid move. Please try again.')
+        continue
+    board[row][col] = 'O'
+
+    # Check if the game is over
+    result = check_game_over(board)
+    if result is not None:
+        print_board(board)
+        if result == 'Tie':
+            print('The game is a tie!')
+        else:
+            print('You win!')
+        break
+    # Computer's move
+    row, col = get_best_move(board)
+    board[row][col] = 'X'
+# Check if the game is over
+    result = check_game_over(board)
+    if result is not None:
+        print_board(board)
+        if result == 'Tie':
+            print('The game is a tie!')
+        else:
+            print('You lose!')
+        break
+# Print the updated game board
+    print_board(board)
+    
+    
